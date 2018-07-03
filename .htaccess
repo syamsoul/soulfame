@@ -1,4 +1,4 @@
-ErrorDocument 403 /soulfame2/forbidden.php
+ErrorDocument 403 /soulfame/forbidden.php
 RewriteEngine on
 RewriteCond %{REQUEST_URI} !forbidden.php$
 RewriteCond %{REQUEST_URI} !reset_path.php$

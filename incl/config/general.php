@@ -4,11 +4,11 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 /*
 ** START - Database Configuration
 ** ***************************************/
-$default_db = "localhost";
+$default_db = "default";
 $db_debug_enable = true;
 
 $list_db = Array(
-    'localhost'   => Array(
+    'default'   => Array(
         "HOSTNAME"   => "localhost",
         "DATABASE"   => "soulfame",
         "USERNAME"   => "root",

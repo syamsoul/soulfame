@@ -22,6 +22,18 @@ function resetPath($fulldir, $rootdir){
     fclose($myfile);
 }
 
+function get_url_base_path(){
+    $script_name = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : $_SERVER['PHP_SELF'];
+    if(empty($script_name)) die("ERROR: URL_BASE_PATH is empty");
+    $script_name = strtr($script_name, Array(
+        "index.php"         => "",
+        "reset_path.php"    => "",
+        "forbidden.php"     => "",
+    ));
+    while(substr($script_name, -1, 1) == "/") $script_name = substr($script_name, 0, -1);
+    return $script_name;
+}
+
 //general function:
 function is_empty_arr($arr){
     foreach($arr as $ikey=>$eval) if(!isset($eval) || empty($eval)) return true;
