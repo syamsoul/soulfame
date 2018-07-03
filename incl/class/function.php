@@ -22,8 +22,6 @@ function resetPath($fulldir, $rootdir){
     fclose($myfile);
 }
 
-
-
 //general function:
 function is_empty_arr($arr){
     foreach($arr as $ikey=>$eval) if(!isset($eval) || empty($eval)) return true;

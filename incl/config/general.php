@@ -1,9 +1,4 @@
 <?php
-
-define("URL_BASE_PATH", "/soulfame2");
-
-define("CONF_NAME", "default");
-
 date_default_timezone_set("Asia/Kuala_Lumpur");
 
 /*

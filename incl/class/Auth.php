@@ -56,9 +56,6 @@ class SoulAuth{
                 "sid"   => $session_id,
             );
 
-            $user_data_prof = $db->select("admin_profile", null, Array(
-                "admin_id"    => $user_data['id'],
-            ), 1, 1);
             $_SESSION['user_profile'] = Array(
                 "xid"           => $user_data['id'],
                 "role_id"       => $user_data['role_id'],
