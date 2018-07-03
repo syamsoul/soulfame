@@ -22,7 +22,7 @@ class Database
 
     public function connect(){
         $config = $this->config;
-        $this->conn = mysqli_connect($config['HOSTNAME'], $config['USERNAME'], $config['PASSWORD'], $config['DATABASE']);
+        $this->conn = @mysqli_connect($config['HOSTNAME'], $config['USERNAME'], $config['PASSWORD'], $config['DATABASE']);
 
         // Check connection
         if (mysqli_connect_errno()){
@@ -38,8 +38,8 @@ class Database
         $con = $this->conn;
 
         if( !($result = mysqli_query($con, $sql_str)) ) {
-            echo "ERROR: Something wrong's while processing MYSQL query: ";
-            if($this->debug) echo mysqli_error($con);
+            echo "ERROR: Something wrong's while processing MYSQL query";
+            if($this->debug) echo ": " . mysqli_error($con);
             exit();
             return false;
         }
@@ -212,7 +212,7 @@ class Database
     public function enableDebug($opt){
         if(!is_bool($opt)) die("ERROR: Problem when enabling debug mode");
         $this->debug = $opt;
-        
+
         return $this;
     }
 

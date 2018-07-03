@@ -7,7 +7,6 @@
     require_once APP_ROOT_DIR . "/incl/class/Encrypt.php";
     require_once APP_ROOT_DIR . "/incl/class/Auth.php";
     require_once APP_ROOT_DIR . "/incl/class/RoleModule.php";
-    require_once APP_ROOT_DIR . "/incl/class/Toastr.php";
     require_once APP_ROOT_DIR . "/incl/class/Route.php";
     require_once APP_ROOT_DIR . "/incl/class/Nav.php";
     require_once APP_ROOT_DIR . "/incl/class/function.php";

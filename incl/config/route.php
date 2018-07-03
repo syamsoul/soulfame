@@ -6,7 +6,7 @@ if(!$authenticated_user){
 
     $pages->setDefaultPage("/");
     $pages->addPage("/", "guest/main.php");
-    $pages->addPage("admin", "guest/admin.php");
+    $pages->addPage("admin", "admin/login.php");
 
 }else{
 

@@ -15,7 +15,7 @@ $db_debug_enable = true;
 $list_db = Array(
     'localhost'   => Array(
         "HOSTNAME"   => "localhost",
-        "DATABASE"   => "soulfame2",
+        "DATABASE"   => "soulfame",
         "USERNAME"   => "root",
         "PASSWORD"   => "",
     ),
