@@ -1,0 +1,24 @@
+{
+    dashboard   : 'Dashboard',
+    configurations: {
+        configuration   : "Configuration",
+        general         : "General",
+        state           : "State",
+        city            : "City",
+        continent       : "Continent"
+    },
+    my_accounts :{
+        my_account  : 'My Account',
+        profileinfo : 'Profile Information',
+        profilepic  : 'Profile Picture',
+        signature   : 'Signature',
+        company     : 'Company',
+    },
+    admin       : 'Admins',
+    member      : 'Members',
+    company     : 'Company',
+    activity    : 'Activity',
+    meeting     : 'Meeting',
+    finance     : 'Finance',
+    file_manager: 'File Manager',
+}

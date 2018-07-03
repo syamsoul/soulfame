@@ -1,0 +1,24 @@
+{
+    dashboard   : 'Papan Pemuka',
+    configurations: {
+        configuration   : "Konfigurasi",
+        general         : "Umum",
+        state           : "Negeri",
+        city            : "Kawasan",
+        continent       : "Cawangan"
+    },
+    my_accounts :{
+        my_account  : 'Akaun Saya',
+        profileinfo : 'Maklumat Profail',
+        profilepic  : 'Gambar Profail',
+        company     : 'Syarikat',
+        signature   : 'Tandatangan',
+    },
+    admin       : 'Pentadbir',
+    member      : 'Ahli',
+    company     : 'Syarikat',
+    activity    : 'Aktiviti',
+    meeting     : 'Mesyuarat',
+    finance     : 'Kewangan',
+    file_manager: 'Pengurus Fail',
+}

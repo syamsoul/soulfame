@@ -1,0 +1,2 @@
+deny from all
+ErrorDocument 403 /soulfame2/forbidden.php

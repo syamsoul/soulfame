@@ -1,0 +1,72 @@
+/* Author: AdminDesigns.com
+ * Last Updated: 02/01/14
+ * Copyright 2014 Admin Designs
+=================================================
+ * This file is reserved for changes made by
+ * the user. It's often times a good idea to
+ * seperate your changes from the themes core.
+ * It makes modifications, and future theme
+ * updates much easier to apply.
+================================================= */
+/* These styles have been placed here for as
+ * they have a high chance of needing to be
+ * changed if one decides to modify the header
+-----------------------------------------------*/
+/* Header button states - text colors */
+.navbar-menus > div > button:focus {
+  color: #666; }
+
+.navbar-menus > div > button:hover {
+  color: #333; }
+
+/* Place your custom styles or styles which
+ * have been generated with the customization
+ * tool below this line.
+-----------------------------------------------*/
+
+.navbar{background-color:rgb(33, 51, 75);background-image:none;}
+.navbar-left{max-width: 500px; width: 100%;}
+.navbar-left-text{line-height: 60px; max-height: 60px; color: #e8e8e8; margin-left: 20px; font-size: 20px;}
+.navbar-right { width:auto !important; max-width: 410px; }
+.user-info{background:rgb(33, 51, 75);}
+#sidebar_left{background:rgb(240, 240, 240);}
+#sidebar_left:before{background:rgb(240, 240, 240);}
+.sidebar-menu ul.sub-nav{background:rgb(221, 221, 221);}
+.sidebar-menu ul.sub-nav a.accordion-toggle{border-bottom: 1px solid #c0b9b9;}
+.sidebar-menu ul > li.active > a,
+.sidebar-menu ul > li > a:hover {background-color: #2c3e50 !important; }
+.sidebar-menu ul > li.active > a>span,
+.sidebar-menu ul > li > a:hover>span{color: #ecf0f1 !important;}
+.panel-heading{background-color:rgb(33, 51, 75);background-image:none;}
+.panel-title{color:rgb(232, 232, 232);}
+#toggle_sidemenu_l{color:rgb(232, 232, 232);}
+#settings_menu{color:rgb(232, 232, 232);}
+#language_menu a > span{color:rgb(170, 170, 170);}
+#language_menu a > i{color:rgb(170, 170, 170);}
+.navbar-menus > .btn-group > button{color:rgb(232, 232, 232);}
+.navbar-menus > .btn-group > button:hover{color:rgb(187, 187, 187);}
+.navbar-divider{border-color:rgb(119, 119, 119);}
+.navbar-menus .btn-group{border-color:rgb(119, 119, 119);}
+.user-info .media-heading{color:rgb(232, 232, 232);}
+.user-info .media-links a{color:rgb(204, 204, 204);}
+.user-info .media-object{border-color:rgb(40, 123, 171);}
+.breadcrumb > li.crumb-active > a{color:rgb(30, 28, 31);font-weight:600;}
+.breadcrumb > li.crumb-icon span{color:rgb(30, 28, 31);}
+.breadcrumb > li.crumb-link > a{color:rgb(119, 119, 119);}
+.breadcrumb > li.crumb-trail{color:rgb(119, 119, 119);}
+#topbar{background: url(../img/patterns/6.png) repeat top left;}
+#topbar .breadcrumb{border-color:rgba(0, 0, 0, 0);}
+.select2-container{width:100% !important; }
+.select2-selection{height: 34px !important;box-shadow: none;border-radius: 0 !important;border-color: #DDD !important;padding: 2px 4px; }
+.swal2-popup{ font-size: 1.25rem !important; }
+.form-group>label:not(.control-label){ margin-top: 5px;}
+.sdDataTable-loading-td{ text-align:center;font-size:1.4em; }
+.datepicker.dropdown-menu{z-index:1500 !important;}
+textarea.form-control{resize: vertical;}
+#alert_menu ul.noti_list{overflow-y: scroll; max-height: 370px; width: 100%;}
+#alert_menu .each_noti{ padding: 20px 20px 15px 20px; }
+#alert_menu .each_noti:not(.each_noti_disabled){ cursor: pointer; }
+#alert_menu .each_noti:not(.each_noti_disabled):hover{ background-color: #efefef; }
+#alert_menu .each_noti>.each_noti_datetime{ padding-top:5px; font-size: 0.7em; text-align: right; }
+.bootstrap-timepicker-widget.dropdown-menu.open{z-index: 1500 !important;}
+.ms-container{width:100% !important;}
