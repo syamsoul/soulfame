@@ -9,10 +9,10 @@ $db_debug_enable = true;
 
 $list_db = Array(
     'default'   => Array(
-        "HOSTNAME"   => "localhost",
-        "DATABASE"   => "soulfame",
-        "USERNAME"   => "root",
-        "PASSWORD"   => "",
+        "HOSTNAME"   => "{{db_hostname}}",
+        "DATABASE"   => "{{db_database}}",
+        "USERNAME"   => "{{db_username}}",
+        "PASSWORD"   => "{{db_password}}",
     ),
 );
 
