@@ -1,0 +1,7 @@
+ErrorDocument 403 /forbidden.php
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{REQUEST_URI} !forbidden.php$
+RewriteCond %{REQUEST_URI} !assets/.*$
+RewriteRule ^(.*)$ index.php?page=$1 [L,QSA]
