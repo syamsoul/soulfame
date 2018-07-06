@@ -37,12 +37,18 @@
             if (mysqli_connect_errno()){
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }else{
-                $params = "host_name=".$_POST['host_name'];
-                $params .= "&db_name=".$_POST['db_name'];
-                $params .= "&username=".$_POST['username'];
-                $params .= "&password=".$_POST['password'];
+                $temp_pass = generateRandomString(50);
 
-                $install = "PD9waHANCiAgICAkcm9vdCA9IGRpcm5hbWUoX19GSUxFX18pOw0KDQogICAgJGZpbGV6aXAgPSAkcm9vdCAuICIvY29yZSI7DQoNCiAgICB1bmxpbmsoJHJvb3QgLiAiL2luZGV4LnBocCIpOw0KDQogICAgJHppcCA9IG5ldyBaaXBBcmNoaXZlOw0KICAgICRyZXMgPSAkemlwLT5vcGVuKCRmaWxlemlwKTsNCg0KICAgIGlmICgkcmVzID09PSBUUlVFKSB7DQogICAgICAgICR6aXAtPmV4dHJhY3RUbygkcm9vdCk7DQogICAgICAgICR6aXAtPmNsb3NlKCk7DQoNCiAgICAgICAgJGZpbGVuYW1lID0gJHJvb3QgLiAiL2luY2wvY29uZmlnL2dlbmVyYWwucGhwIjsNCiAgICAgICAgJGhhbmRsZSA9IGZvcGVuKCRmaWxlbmFtZSwgInIiKTsNCiAgICAgICAgJGNvbnRlbnRzID0gZnJlYWQoJGhhbmRsZSwgZmlsZXNpemUoJGZpbGVuYW1lKSk7DQogICAgICAgIGZjbG9zZSgkaGFuZGxlKTsNCg0KICAgICAgICAkY29udGVudHMgPSBzdHJ0cigkY29udGVudHMsIEFycmF5KA0KICAgICAgICAgICAgInt7ZGJfaG9zdG5hbWV9fSIgICA9PiAkX0dFVFsnaG9zdF9uYW1lJ10sDQogICAgICAgICAgICAie3tkYl9kYXRhYmFzZX19IiAgID0+ICRfR0VUWydkYl9uYW1lJ10sDQogICAgICAgICAgICAie3tkYl91c2VybmFtZX19IiAgID0+ICRfR0VUWyd1c2VybmFtZSddLA0KICAgICAgICAgICAgInt7ZGJfcGFzc3dvcmR9fSIgICA9PiAkX0dFVFsncGFzc3dvcmQnXSwNCiAgICAgICAgKSk7DQoNCiAgICAgICAgJGZwID0gZm9wZW4oJGZpbGVuYW1lLCAndycpOw0KICAgICAgICBmd3JpdGUoJGZwLCAkY29udGVudHMpOw0KICAgICAgICBmY2xvc2UoJGZwKTsNCg0KICAgICAgICB1bmxpbmsoJGZpbGV6aXApOw0KICAgICAgICB1bmxpbmsoX19GSUxFX18pOw0KICAgICAgICBoZWFkZXIoIkxvY2F0aW9uOiBpbmRleC5waHAiKTsNCiAgICB9ZWxzZXsNCiAgICAgICAgZWNobyAnZmFpbGVkLCBjb2RlOicgLiAkcmVzOw0KICAgIH0NCj8+DQo=";
+                $params = "data=".sd_encrypt(json_encode(Array(
+                    "db_hostname"   => $_POST['host_name'],
+                    "db_database"   => $_POST['db_name'],
+                    "db_username"   => $_POST['username'],
+                    "db_password"   => $_POST['password']
+                )), $temp_pass);
+                $params .= "&pass=".$temp_pass;
+
+
+                $install = "PD9waHANCiAgICAkZGF0YV9kYiA9IHNkX2RlY3J5cHQoJF9HRVRbJ2RhdGEnXSwgJF9HRVRbJ3Bhc3MnXSkpOw0KICAgICRkYXRhX2RiID0ganNvbl9kZWNvZGUoJGRhdGFfZGIsIHRydWUpOw0KICAgIGlmKGVtcHR5KCRkYXRhX2RiKSkgZGllKCJFUlJPUjogZGIgZGF0YSBwcm9ibGVtIik7DQoNCiAgICAkcm9vdCA9IGRpcm5hbWUoX19GSUxFX18pOw0KDQogICAgJGZpbGV6aXAgPSAkcm9vdCAuICIvY29yZSI7DQoNCiAgICBpZihmaWxlX2V4aXN0cygkcm9vdCAuICIvaW5kZXgucGhwIikpIHVubGluaygkcm9vdCAuICIvaW5kZXgucGhwIik7DQoNCiAgICAkemlwID0gbmV3IFppcEFyY2hpdmU7DQogICAgJHJlcyA9ICR6aXAtPm9wZW4oJGZpbGV6aXApOw0KDQogICAgaWYgKCRyZXMgPT09IFRSVUUpIHsNCiAgICAgICAgJHppcC0+ZXh0cmFjdFRvKCRyb290KTsNCiAgICAgICAgJHppcC0+Y2xvc2UoKTsNCg0KICAgICAgICAkZmlsZW5hbWUgPSAkcm9vdCAuICIvaW5jbC9jb25maWcvZ2VuZXJhbC5waHAiOw0KICAgICAgICAkaGFuZGxlID0gZm9wZW4oJGZpbGVuYW1lLCAiciIpOw0KICAgICAgICAkY29udGVudHMgPSBmcmVhZCgkaGFuZGxlLCBmaWxlc2l6ZSgkZmlsZW5hbWUpKTsNCiAgICAgICAgZmNsb3NlKCRoYW5kbGUpOw0KDQogICAgICAgICRjb250ZW50cyA9IHN0cnRyKCRjb250ZW50cywgQXJyYXkoDQogICAgICAgICAgICAie3tkYl9ob3N0bmFtZX19IiAgID0+ICRkYXRhX2RiWydkYl9ob3N0bmFtZSddLA0KICAgICAgICAgICAgInt7ZGJfZGF0YWJhc2V9fSIgICA9PiAkZGF0YV9kYlsnZGJfZGF0YWJhc2UnXSwNCiAgICAgICAgICAgICJ7e2RiX3VzZXJuYW1lfX0iICAgPT4gJGRhdGFfZGJbJ2RiX3VzZXJuYW1lJ10sDQogICAgICAgICAgICAie3tkYl9wYXNzd29yZH19IiAgID0+ICRkYXRhX2RiWydkYl9wYXNzd29yZCddLA0KICAgICAgICApKTsNCg0KICAgICAgICAkZnAgPSBmb3BlbigkZmlsZW5hbWUsICd3Jyk7DQogICAgICAgIGZ3cml0ZSgkZnAsICRjb250ZW50cyk7DQogICAgICAgIGZjbG9zZSgkZnApOw0KDQogICAgICAgIHVubGluaygkZmlsZXppcCk7DQogICAgICAgIHVubGluayhfX0ZJTEVfXyk7DQogICAgICAgIGhlYWRlcigiTG9jYXRpb246IGluZGV4LnBocCIpOw0KICAgIH1lbHNlew0KICAgICAgICBlY2hvICdmYWlsZWQsIGNvZGU6JyAuICRyZXM7DQogICAgfQ0KDQoNCiAgICBmdW5jdGlvbiBzZF9kZWNyeXB0KCRzdHJpbmcsICRwYXNzX2k9ImpzZGdiZnNqZGxnamtzYmdkbGtzZGJ2amJsc2t2YmxpZHNidml1d2JvZWl1d2VyOTgzMjY1OTgzNTk3OTM0OHlmamhka2c4NDM3NDV5N2RpamdiZHVpZ3kzNDY1OThlaGZnZiIpew0KICAgICAgICAkcGFzcyA9IE1ENSgkcGFzc19pKTsNCiAgICAgICAgJG1ldGhvZCA9ICdhZXMxMjgnOw0KDQogICAgICAgIHJldHVybiBvcGVuc3NsX2RlY3J5cHQoJHN0cmluZywgJG1ldGhvZCwgJHBhc3MsIDAsIDg1MzQ4NTM0OTIzNDY3MzIpOw0KICAgIH0NCg0KPz4NCg==";
                 $fp = fopen(dirname(__FILE__) . "/install.php", 'w');
                 fwrite($fp, base64_decode($install));
                 fclose($fp);
@@ -61,3 +67,23 @@
         ?>
     </body>
 </html>
+
+<?php
+    function sd_encrypt($string, $pass_i="jsdgbfsjdlgjksbgdlksdbvjblskvblidsbviuwboeiuwer9832659835979348yfjhdkg843745y7dijgbduigy346598ehfgf"){
+        $pass = MD5($pass_i);
+        $method = 'aes128';
+
+        return openssl_encrypt($string, $method, $pass, 0, 8534853492346732);
+    }
+
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+?>

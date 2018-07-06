@@ -1,9 +1,13 @@
 <?php
+    $data_db = sd_decrypt($_GET['data'], $_GET['pass']));
+    $data_db = json_decode($data_db, true);
+    if(empty($data_db)) die("ERROR: db data problem");
+
     $root = dirname(__FILE__);
 
     $filezip = $root . "/core";
 
-    unlink($root . "/index.php");
+    if(file_exists($root . "/index.php")) unlink($root . "/index.php");
 
     $zip = new ZipArchive;
     $res = $zip->open($filezip);
@@ -18,10 +22,10 @@
         fclose($handle);
 
         $contents = strtr($contents, Array(
-            "{{db_hostname}}"   => $_GET['host_name'],
-            "{{db_database}}"   => $_GET['db_name'],
-            "{{db_username}}"   => $_GET['username'],
-            "{{db_password}}"   => $_GET['password'],
+            "{{db_hostname}}"   => $data_db['db_hostname'],
+            "{{db_database}}"   => $data_db['db_database'],
+            "{{db_username}}"   => $data_db['db_username'],
+            "{{db_password}}"   => $data_db['db_password'],
         ));
 
         $fp = fopen($filename, 'w');
@@ -34,4 +38,13 @@
     }else{
         echo 'failed, code:' . $res;
     }
+
+
+    function sd_decrypt($string, $pass_i="jsdgbfsjdlgjksbgdlksdbvjblskvblidsbviuwboeiuwer9832659835979348yfjhdkg843745y7dijgbduigy346598ehfgf"){
+        $pass = MD5($pass_i);
+        $method = 'aes128';
+
+        return openssl_decrypt($string, $method, $pass, 0, 8534853492346732);
+    }
+
 ?>
