@@ -4,8 +4,8 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 /*
 ** START - Database Configuration
 ** ***************************************/
-$default_db = "default";
-$db_debug_enable = true;
+define("DB_SELECT", "default");
+define("DB_DEBUG_ENABLE", true);
 
 $list_db = Array(
     'default'   => Array(
@@ -14,9 +14,15 @@ $list_db = Array(
         "USERNAME"   => "{{db_username}}",
         "PASSWORD"   => "{{db_password}}",
     ),
+    'production'   => Array(
+        "HOSTNAME"   => "none",
+        "DATABASE"   => "none",
+        "USERNAME"   => "none",
+        "PASSWORD"   => "none",
+    ),
 );
 
-$db_conf = $list_db[$default_db];
+$db_conf = $list_db[DB_SELECT];
 /* ***************************************
 ** END - Database Configuration
 */

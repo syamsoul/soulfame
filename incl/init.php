@@ -13,7 +13,7 @@
 
     define("URL_BASE_PATH", get_url_base_path());
 
-    $db     = (new Database($db_conf['HOSTNAME'], $db_conf['USERNAME'], $db_conf['PASSWORD'], $db_conf['DATABASE']))->enableDebug($db_debug_enable);
+    $db     = (new Database($db_conf['HOSTNAME'], $db_conf['USERNAME'], $db_conf['PASSWORD'], $db_conf['DATABASE']))->enableDebug(DB_DEBUG_ENABLE);
     $cache  = new SoulCache(APP_ROOT_DIR . "/temp/cache");
     $auth   = SoulAuth::init(Array(
         "db"        => $db,
