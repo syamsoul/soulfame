@@ -1,5 +1,5 @@
 <?php
-    $data_db = sd_decrypt($_GET['data'], $_GET['pass']));
+    $data_db = sd_decrypt($_GET['data'], $_GET['pass']);
     $data_db = json_decode($data_db, true);
     if(empty($data_db)) die("ERROR: db data problem");
 
@@ -44,7 +44,7 @@
         $pass = MD5($pass_i);
         $method = 'aes128';
 
-        return openssl_decrypt($string, $method, $pass, 0, 8534853492346732);
+        return openssl_decrypt(base64_decode($string), $method, $pass, 0, 8534853492346732);
     }
 
 ?>
