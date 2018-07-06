@@ -2,7 +2,7 @@
 $reset_path = dirname(__FILE__) . "/reset_path.php";
 if(!file_exists($reset_path)){
     $fp = fopen($reset_path, 'w');
-    fwrite($fp, base64_decode("PD9waHAKcmVxdWlyZV9vbmNlIGRpcm5hbWUoX19GSUxFX18pIC4gIi9pbmNsL2NsYXNzL2Z1bmN0aW9uLnBocCI7CgpyZXNldFBhdGgoZGlybmFtZShfX0ZJTEVfXyksIGdldF91cmxfYmFzZV9wYXRoKCkpOwoKaGVhZGVyKCJMb2NhdGlvbjogZm9yYmlkZGVuLnBocCIpOwo/Pg=="));
+    fwrite($fp, base64_decode("PD9waHANCnJlcXVpcmVfb25jZSBkaXJuYW1lKF9fRklMRV9fKSAuICIvaW5jbC9jbGFzcy9mdW5jdGlvbi5waHAiOw0KDQokZm9yY2VfaHR0cHMgPSBmYWxzZTsNCg0KcmVzZXRQYXRoKGRpcm5hbWUoX19GSUxFX18pLCBnZXRfdXJsX2Jhc2VfcGF0aCgpLCAkZm9yY2VfaHR0cHMpOw0KDQpoZWFkZXIoIkxvY2F0aW9uOiBmb3JiaWRkZW4ucGhwIik7DQo/Pg0K"));
     fclose($fp);
     header("Location: reset_path.php");
     exit();

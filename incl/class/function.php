@@ -1,11 +1,13 @@
 <?php
 include APP_ROOT_DIR . "/incl/config/function.php";
 
-function resetPath($fulldir, $rootdir){
+function resetPath($fulldir, $rootdir, $force_https=false){
     $myfile = fopen($fulldir . "/.htaccess", "w") or die("Unable to open file!");
     $txt = "";
     $txt .= "ErrorDocument 403 ".$rootdir."/forbidden.php\n";
     $txt .= "RewriteEngine on\n";
+    if($force_https) $txt .= "RewriteCond %{HTTPS} off\n";
+    if($force_https) $txt .= "RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n";
     $txt .= "RewriteCond %{REQUEST_URI} !forbidden.php$\n";
     $txt .= "RewriteCond %{REQUEST_URI} !reset_path.php$\n";
     $txt .= "RewriteCond %{REQUEST_URI} !assets/.*$\n";

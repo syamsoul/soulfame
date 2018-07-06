@@ -1,0 +1,2 @@
+ErrorDocument 403 /soulfame/forbidden.php
+RewriteEngine Off
