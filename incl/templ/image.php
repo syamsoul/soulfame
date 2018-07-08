@@ -21,18 +21,4 @@ switch( $file_extension ) {
 header('Content-type: ' . $ctype);
 header('Content-Length: ' . filesize($file_path));
 readfile($file_path);
-
-
-function checkIsExist($folder_file, $module_name, $table){
-
-    global $db, $module, $aid;
-
-    if(!$module->check($module_name)) return false;
-
-    $is_exist = $db->select($table, Array("id"), Array("admin_id"=>$aid, "image_filename"=>$folder_file[1]), 1, 1);
-    if($is_exist === false) return false;
-
-    return true;
-
-}
 ?>
