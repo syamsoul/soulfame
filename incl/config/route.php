@@ -15,4 +15,7 @@ if(!$authenticated_user){
 
 }
 
+$pages->addPage("img/{filename}", "image.php");
+$pages->addPage("img/{folder}/{filename}", "image.php");
+
 ?>

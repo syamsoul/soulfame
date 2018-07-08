@@ -60,6 +60,11 @@
     }
 
     define("TEMPLATE_DIR", APP_ROOT_DIR . "/incl/templ");
+    define("IMG_STORAGE_PATH", APP_ROOT_DIR . "/incl/storage/image");
+
+    if(!is_dir(TEMPLATE_DIR)) mkdir(TEMPLATE_DIR, 0755, true);
+    if(!is_dir(IMG_STORAGE_PATH)) mkdir(IMG_STORAGE_PATH, 0755, true);
+    
     $pages      = new SoulRoute(URL_BASE_PATH, TEMPLATE_DIR);
     $navmenu    = new SoulNav();
 
