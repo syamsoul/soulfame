@@ -35,6 +35,8 @@
 
         public function executeRoute($current_page){
 
+            $GLOBALS['_ROUTE'] = Array();
+
             $current_page       = $this->filter_url_route($current_page);
             $pages              = $this->pages;
 
@@ -53,7 +55,7 @@
                         if(isset($route_url_arr[$j])){
                             $is_url_var = $this->is_url_var($route_url_arr[$j]);
                             if(is_array($is_url_var) && $is_url_var['result']){
-                                $GLOBALS[$is_url_var['var_name']] = $e_cpa;
+                                $GLOBALS['_ROUTE'][$is_url_var['var_name']] = $e_cpa;
                                 $check_each[$j] = true;
                             }else{
                                 if($route_url_arr[$j] == $e_cpa) $check_each[$j] = true;
