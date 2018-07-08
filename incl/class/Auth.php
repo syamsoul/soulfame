@@ -36,8 +36,8 @@ class SoulAuth{
         $db     = self::$db;
         $enc    = self::$encrypt;
 
-        $user_data = $db->select("admin", Array("id", "role_id"), Array(
-            "admin_name"    => $uname,
+        $user_data = $db->select("user", Array("id", "role_id"), Array(
+            "user_name"    => $uname,
             "password"      => MD5($pass),
         ), 1, 1);
 
