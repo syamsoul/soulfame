@@ -206,7 +206,7 @@ class Database
         $genid_col = function($length=50, $colname="id"){ return "`$colname` INT($length) NOT NULL PRIMARY KEY AUTO_INCREMENT"; };
         $date_col = "`updated_at` DATETIME DEFAULT NOW() ON UPDATE NOW(), `created_at` DATETIME DEFAULT NOW()";
 
-        if(!in_array('admin', $sql)) $this->query("CREATE TABLE `admin` (".$genid_col().", `admin_name` VARCHAR(50) NOT NULL, UNIQUE(`admin_name`), `password` TEXT, `role_id` INT(2) NOT NULL default 0, $date_col)");
+        if(!in_array('user', $sql)) $this->query("CREATE TABLE `user` (".$genid_col().", `user_name` VARCHAR(50) NOT NULL, UNIQUE(`user_name`), `password` TEXT, `role_id` INT(2) NOT NULL default 0, $date_col)");
         if(!in_array('role', $sql)) $this->query("CREATE TABLE `role` (".$genid_col(5).", `order_no` INT(5) DEFAULT 9999, `role_name` VARCHAR(30), `modules` TEXT, `group` INT(5), $date_col)");
         if(!in_array('group', $sql)) $this->query("CREATE TABLE `group` (".$genid_col(5).", `group_name` VARCHAR(80), $date_col)");
         if(!in_array('module', $sql)) $this->query("CREATE TABLE `module` (".$genid_col(11).", `module_name` VARCHAR(80), $date_col)");
