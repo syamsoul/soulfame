@@ -53,7 +53,7 @@
                         if(isset($route_url_arr[$j])){
                             $is_url_var = $this->is_url_var($route_url_arr[$j]);
                             if(is_array($is_url_var) && $is_url_var['result']){
-                                $_GET[$is_url_var['var_name']] = $e_cpa;
+                                $GLOBALS[$is_url_var['var_name']] = $e_cpa;
                                 $check_each[$j] = true;
                             }else{
                                 if($route_url_arr[$j] == $e_cpa) $check_each[$j] = true;
