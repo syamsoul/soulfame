@@ -11,7 +11,7 @@
     require_once APP_ROOT_DIR . "/incl/class/Nav.php";
     require_once APP_ROOT_DIR . "/incl/class/function.php";
 
-	define("URL_HTTP_HOST", REQUEST_SCHEME."://".HTTP_HOST);
+	define("URL_HTTP_HOST", $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]);
     define("URL_BASE_PATH", get_url_base_path());
 
     $db     = (new Database($db_conf['HOSTNAME'], $db_conf['USERNAME'], $db_conf['PASSWORD'], $db_conf['DATABASE']))->enableDebug(DB_DEBUG_ENABLE);
