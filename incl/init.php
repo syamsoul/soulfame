@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    require_once APP_ROOT_DIR . "/incl/class/function.php";
     require_once APP_ROOT_DIR . "/incl/config/general.php";
     require_once APP_ROOT_DIR . "/incl/class/DB.class.php";
     require_once APP_ROOT_DIR . "/incl/class/Cache.php";
@@ -9,9 +10,8 @@
     require_once APP_ROOT_DIR . "/incl/class/RoleModule.php";
     require_once APP_ROOT_DIR . "/incl/class/Route.php";
     require_once APP_ROOT_DIR . "/incl/class/Nav.php";
-    require_once APP_ROOT_DIR . "/incl/class/function.php";
 
-	define("URL_HTTP_HOST", $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]);
+    define("URL_HTTP_HOST", get_url_http_host());
     define("URL_BASE_PATH", get_url_base_path());
 
     $db     = (new Database($db_conf['HOSTNAME'], $db_conf['USERNAME'], $db_conf['PASSWORD'], $db_conf['DATABASE']))->enableDebug(DB_DEBUG_ENABLE);
@@ -65,7 +65,7 @@
 
     if(!is_dir(TEMPLATE_DIR)) mkdir(TEMPLATE_DIR, 0755, true);
     if(!is_dir(IMG_STORAGE_PATH)) mkdir(IMG_STORAGE_PATH, 0755, true);
-    
+
     $pages      = new SoulRoute(URL_BASE_PATH, TEMPLATE_DIR);
     $navmenu    = new SoulNav();
 

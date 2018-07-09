@@ -24,6 +24,16 @@ function resetPath($fulldir, $rootdir, $force_https=false){
     fclose($myfile);
 }
 
+function get_url_http_host(){
+    if(isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) $http_protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+    elseif(isset($_SERVER['REQUEST_SCHEME'])) $http_protocol = $_SERVER['REQUEST_SCHEME'];
+    else{
+        if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=="on") $http_protocol = "https";
+        else $http_protocol = "http";
+    }
+    return $http_protocol."://".$_SERVER["HTTP_HOST"];
+}
+
 function get_url_base_path(){
     $script_name = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : $_SERVER['PHP_SELF'];
     if(empty($script_name)) die("ERROR: URL_BASE_PATH is empty");
