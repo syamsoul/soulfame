@@ -1,13 +1,56 @@
 <?php
 include APP_ROOT_DIR . "/incl/config/function.php";
 
-function resetPath($fulldir, $rootdir, $force_https=false){
+function checkResetPath($force_https, $force_subdomain){
+
+    $procceed = false;
+
+    $temp_folder = APP_ROOT_DIR . "/temp";
+    if(!is_dir($temp_folder)) mkdir($temp_folder, 0755, true);
+
+    $reset_path = $temp_folder . "/reset_path";
+
+    $current_temp_str = MD5(json_encode(Array(
+        $force_https, $force_subdomain
+    )));
+
+    if(!file_exists($reset_path)) $procceed = true;
+    else{
+        $previous_temp_str = file_get_contents($reset_path);
+        if($previous_temp_str!=$current_temp_str){
+            unlink($reset_path);
+            $procceed = true;
+        }
+    }
+
+    if($procceed){
+        $fp = fopen($reset_path, 'w');
+        fwrite($fp, $current_temp_str);
+        fclose($fp);
+
+        resetPath(APP_ROOT_DIR, get_url_base_path(), $force_https, $force_subdomain);
+
+        header("Location: index.php");
+        exit();
+    }
+}
+
+function resetPath($fulldir, $rootdir, $force_https=false, $force_subdomain=false){
+
     $myfile = fopen($fulldir . "/.htaccess", "w") or die("Unable to open file!");
     $txt = "";
     $txt .= "ErrorDocument 403 ".$rootdir."/forbidden.php\n";
     $txt .= "RewriteEngine on\n";
-    if($force_https) $txt .= "RewriteCond %{HTTPS} off\n";
-    if($force_https) $txt .= "RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n";
+    if(!empty($force_subdomain) && is_string($force_subdomain)){
+        $force_subdomain = str_replace(".", "\.", $force_subdomain);
+        $txt .= "RewriteCond %{HTTP_HOST} ^".$force_subdomain."$\n";
+        $txt .= "RewriteRule .? - [S=1]\n";
+        $txt .= "RewriteRule ^ http://".$force_subdomain."/index.php [L]\n";
+    }
+    if($force_https){
+        $txt .= "RewriteCond %{HTTPS} off\n";
+        $txt .= "RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n";
+    }
     $txt .= "RewriteCond %{REQUEST_URI} !forbidden.php$\n";
     $txt .= "RewriteCond %{REQUEST_URI} !reset_path.php$\n";
     $txt .= "RewriteCond %{REQUEST_URI} !assets/.*$\n";
@@ -39,7 +82,6 @@ function get_url_base_path(){
     if(empty($script_name)) die("ERROR: URL_BASE_PATH is empty");
     $script_name = strtr($script_name, Array(
         "index.php"         => "",
-        "reset_path.php"    => "",
         "forbidden.php"     => "",
     ));
     while(substr($script_name, -1, 1) == "/") $script_name = substr($script_name, 0, -1);

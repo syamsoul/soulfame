@@ -1,6 +1,9 @@
 <?php
 date_default_timezone_set("Asia/Kuala_Lumpur");
 
+define("FORCE_HTTPS", false);
+define("FORCE_SUBDOMAIN", false); //or put subdomain (string) e.g "sub.domain.com";
+
 /*
 ** START - Database Configuration
 ** ***************************************/

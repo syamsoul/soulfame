@@ -1,8 +1,6 @@
 <?php
     session_start();
 
-    require_once APP_ROOT_DIR . "/incl/class/function.php";
-    require_once APP_ROOT_DIR . "/incl/config/general.php";
     require_once APP_ROOT_DIR . "/incl/class/DB.class.php";
     require_once APP_ROOT_DIR . "/incl/class/Cache.php";
     require_once APP_ROOT_DIR . "/incl/class/Encrypt.php";
