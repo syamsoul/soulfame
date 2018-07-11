@@ -7,8 +7,10 @@
             $roles = $db->select("role", Array("id", "modules"));
             $result = Array();
             foreach($roles as $role){
-                $temp_mod = $db->query_select("SELECT `module_name` FROM `module` WHERE `id` IN (".$role['modules'].")");
-                $temp_mod = array_column($temp_mod, 'module_name');
+                if(!empty($role['modules'])){
+                    $temp_mod = $db->query_select("SELECT `module_name` FROM `module` WHERE `id` IN (".$role['modules'].")");
+                    $temp_mod = array_column($temp_mod, 'module_name');
+                }else $temp_mod = Array();
                 $result[$role['id']] = $temp_mod;
             }
             return json_encode($result);
